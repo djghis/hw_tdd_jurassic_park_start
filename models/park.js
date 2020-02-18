@@ -50,6 +50,15 @@ Park.prototype.totalNumberOfVisitorPerYear = function() {
   const yearlyVisitors = dailyVisitor *365
   return yearlyVisitors
 };
+Park.prototype.revenuePerYear = function() {
+  let dailyVisitor=0;
+  for (let dinosaur of this.collectionOfDinosaurs){
+    dailyVisitor += dinosaur.guestsAttractedPerDay;
+  }
+  const yearlyVisitors = dailyVisitor *365;
+  const revenuePerYear = yearlyVisitors * this.ticketPrice
+  return revenuePerYear
+};
 
 
 
