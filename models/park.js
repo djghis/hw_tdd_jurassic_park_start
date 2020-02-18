@@ -24,4 +24,17 @@ Park.prototype.findMostVisitor = function(){
   return dinoWithMostVisitors;
 }
 
+Park.prototype.findSpecies = function(species){
+  let dinoSpecies = [];
+  for (let dinosaur of this.collectionOfDinosaurs){
+    if (dinosaur.species === species ) {
+      dinoSpecies.push(dinosaur)
+    }
+  }
+  return dinoSpecies;
+}
+
+
+
+
 module.exports = Park;
