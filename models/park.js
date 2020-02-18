@@ -42,7 +42,7 @@ let visitorPerDay = Park.prototype.totalNumberOfVisitorPerDay = function () {
   return dailyVisitor
 };
 
-Park.prototype.totalNumberOfVisitorPerYear = function() { return this.totalNumberOfVisitorPerDay() * 365
+Park.prototype.totalNumberOfVisitorPerYear = function() { return this.totalNumberOfVisitorPerDay() * 363
 };
 
 Park.prototype.revenuePerYear = function() {
