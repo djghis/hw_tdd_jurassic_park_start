@@ -34,7 +34,7 @@ Park.prototype.findSpecies = function(species){
   return dinoSpecies;
 }
 
-Park.prototype.totalNumberOfVisitorPerDay = function () {
+let visitorPerDay = Park.prototype.totalNumberOfVisitorPerDay = function () {
   let dailyVisitor=0;
   for (let dinosaur of this.collectionOfDinosaurs){
     dailyVisitor += dinosaur.guestsAttractedPerDay;
@@ -42,22 +42,12 @@ Park.prototype.totalNumberOfVisitorPerDay = function () {
   return dailyVisitor
 };
 
-Park.prototype.totalNumberOfVisitorPerYear = function() {
-  let dailyVisitor=0;
-  for (let dinosaur of this.collectionOfDinosaurs){
-    dailyVisitor += dinosaur.guestsAttractedPerDay;
-  }
-  const yearlyVisitors = dailyVisitor *365
-  return yearlyVisitors
+Park.prototype.totalNumberOfVisitorPerYear = function() { return this.totalNumberOfVisitorPerDay() * 365
 };
+
 Park.prototype.revenuePerYear = function() {
-  let dailyVisitor=0;
-  for (let dinosaur of this.collectionOfDinosaurs){
-    dailyVisitor += dinosaur.guestsAttractedPerDay;
-  }
-  const yearlyVisitors = dailyVisitor *365;
-  const revenuePerYear = yearlyVisitors * this.ticketPrice
-  return revenuePerYear
+  return this.totalNumberOfVisitorPerYear() * this.ticketPrice
+
 };
 
 
