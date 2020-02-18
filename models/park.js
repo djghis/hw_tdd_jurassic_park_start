@@ -34,11 +34,21 @@ Park.prototype.findSpecies = function(species){
   return dinoSpecies;
 }
 
-Park.prototype.totalNumberOfVisitorPerDay = function () {let dailyVisitor=0;
+Park.prototype.totalNumberOfVisitorPerDay = function () {
+  let dailyVisitor=0;
   for (let dinosaur of this.collectionOfDinosaurs){
     dailyVisitor += dinosaur.guestsAttractedPerDay;
   }
   return dailyVisitor
+};
+
+Park.prototype.totalNumberOfVisitorPerYear = function() {
+  let dailyVisitor=0;
+  for (let dinosaur of this.collectionOfDinosaurs){
+    dailyVisitor += dinosaur.guestsAttractedPerDay;
+  }
+  const yearlyVisitors = dailyVisitor *365
+  return yearlyVisitors
 };
 
 
