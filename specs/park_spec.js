@@ -5,9 +5,12 @@ const Dinosaur = require('../models/dinosaur.js');
 describe('Park', function() {
 
   let park;
+  let dinosaur;  // add the let variable name here so it s not a global variable by being created in the beforeEach
+  let dinosaur1;
+  let dinosaur2;
 
   beforeEach(function () {
-    park= new Park ("Jurassic Park",10);
+    park = new Park ("Jurassic Park",10);
     dinosaur = new Dinosaur('t-rex', 'carnivore', 50);
     dinosaur1 = new Dinosaur('Diplodocus', 'herbivore', 20);
     dinosaur2 = new Dinosaur('pterodactyle', 'carnivore', 60);
@@ -24,7 +27,7 @@ describe('Park', function() {
   });
 
   it('should have a collection of dinosaurs',function(){
-    const actual =park.collectionOfDinosaurs;
+    const actual = park.collectionOfDinosaurs;
     assert.deepStrictEqual(actual,[]);
   });
 
@@ -34,11 +37,18 @@ describe('Park', function() {
     assert.strictEqual(actual, 1)
   });
 
+  // it('should be able to remove a dinosaur from its collection',function(){
+  //   park.addDinosaur(dinosaur);
+  //   park.removeDinosaur();
+  //   const actual=park.collectionOfDinosaurs
+  //   assert.deepStrictEqual(actual,[]);
+  // });
   it('should be able to remove a dinosaur from its collection',function(){
     park.addDinosaur(dinosaur);
-    park.removeDinosaur();
-    const actual=park.collectionOfDinosaurs
-    assert.deepStrictEqual(actual,[]);
+    park.addDinosaur(dinosaur1);
+    park.removeDinosaur(dinosaur);
+    const actual = park.collectionOfDinosaurs
+    assert.deepStrictEqual(actual, [dinosaur1]);
   });
 
   it('should be able to find the dinosaur that attracts the most visitors', function(){

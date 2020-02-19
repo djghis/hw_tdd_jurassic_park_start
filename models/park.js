@@ -1,7 +1,7 @@
-const Park = function (name, ticketPrice, collectionOfDinosaurs) {
+const Park = function (name, ticketPrice, collectionOfDinosaurs = []) {
   this.name = name;
   this.ticketPrice = ticketPrice;
-  this.collectionOfDinosaurs = [];
+  this.collectionOfDinosaurs = collectionOfDinosaurs;  //could be = []
 };
 
 
@@ -10,9 +10,13 @@ Park.prototype.addDinosaur = function(dinosaur){
 }
 
 
-Park.prototype.removeDinosaur = function(){
-  this.collectionOfDinosaurs.pop()
-}
+// Park.prototype.removeDinosaur = function(){
+//   this.collectionOfDinosaurs.pop()
+// }
+Park.prototype.removeDinosaur = function(dino){
+  const indexOfDino = this.collectionOfDinosaurs.indexOf(dino);
+  this.collectionOfDinosaurs.splice(indexOfDino, 1);
+};
 
 Park.prototype.findMostVisitor = function(){
   let dinoWithMostVisitors = this.collectionOfDinosaurs[0];
@@ -25,7 +29,7 @@ Park.prototype.findMostVisitor = function(){
 }
 
 Park.prototype.findSpecies = function(species){
-  let dinoSpecies = [];
+  const dinoSpecies = [];
   for (let dinosaur of this.collectionOfDinosaurs){
     if (dinosaur.species === species ) {
       dinoSpecies.push(dinosaur)
@@ -35,7 +39,7 @@ Park.prototype.findSpecies = function(species){
 }
 
  Park.prototype.totalNumberOfVisitorPerDay = function () {
-  let dailyVisitor=0;
+  let dailyVisitor = 0;
   for (let dinosaur of this.collectionOfDinosaurs){
     dailyVisitor += dinosaur.guestsAttractedPerDay;
   }
